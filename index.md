@@ -37,16 +37,23 @@ One of the challenges we have to deal with is a varied density of particles in a
 - With respect to our demo, we hope to have a visual representation of our 2-D fluid simulation that shows a fluid varying as time progresses.
 - We also plan to have speedup graphs that show the speedup that we get from our parallel CUDA version over the sequential version that we will implement as well. 
 
+### Platform Choice 
+- We will be working in C++ and using libraries for the GUI
+
 ### Schedule
 **April 10:** Finish Proposal 
 
-**April 17:** Finish Serial Implementation of Fluid Simulation for CPU
+**April 17:** Finish Serial Implementation of Fluid Simulation for the CPU
 
-**April 25:** Finish 
+**April 19:** Finish setting up GUI to see outputs of the simulation
 
-**May 1   :**    Fois
+**April 25:** Have first iteration of parallel GPU implementation working  
 
-**May 8   :**    GgG
+**May 1:** Improve the parallel GPU implementation to obtain peak performance
+
+**May 6:** If substantial speedup achieved, work on free surface boundaries and 3d implementation, otherwise try to acheive greater speedup
+
+**May 8:** Analyze the performance outputs and write final report
 
 ```markdown
 Syntax highlighted code block
