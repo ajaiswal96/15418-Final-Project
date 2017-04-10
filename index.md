@@ -24,10 +24,10 @@ The Navier-Stokes equation for incompressible homogeneous fluids forms the basis
 One of the challenges we have to deal with is a varied density of particles in a grid cell due to advection. For example if we have a force pushing to the right applied to particles on the left, The grid cells on the left will have fewer particles in them as time moves on, and the grid cells on the right will have more. This will create a workload imbalance, hindering peak performance from a parallel implementation. Another issue involves dealing with dependencies. Not all the steps will be able to 
 
 ### Resources
-- Bulleted We plan to use the the GTX 1080 GPU’s on the GHC machines that we used for assignment 2, and thus all our code will most likely be in CUDA.
-- Bulleted We may also need libraries to visualize the fluid simulation and display the liquid flow as time progresses. 
-- Bulleted All of our preliminary research has been based off a textbook published by NVIDIA that describes how to do fluid simulation. (http://http.developer.nvidia.com/GPUGems/gpugems_ch38.html) 
-- Bulleted We don’t have an existing code base, and so we will be starting from scratch
+- We plan to use the the GTX 1080 GPU’s on the GHC machines that we used for assignment 2, and thus all our code will most likely be in CUDA.
+- We may also need libraries to visualize the fluid simulation and display the liquid flow as time progresses. 
+- All of our preliminary research has been based off a textbook published by NVIDIA that describes how to do fluid simulation. (http://http.developer.nvidia.com/GPUGems/gpugems_ch38.html) 
+- We don’t have an existing code base, and so we will be starting from scratch
 
 ```markdown
 Syntax highlighted code block
