@@ -21,11 +21,6 @@ We will be representing the fluid as a simulation grid, which is indexed in by t
 
 The Navier-Stokes equation for incompressible homogeneous fluids
  
-
-Homogeneous Incompressible
-
-Navier-Stokes
-
 ### Challenges 
 One of the challenges we have to deal with is a varied density of particles in a grid cell due to advection. For example if we have a force pushing to the right applied to particles on the left, The grid cells on the left will have fewer particles in them as time moves on, and the grid cells on the right will have more. This will create a workload imbalance, hindering peak performance from a parallel implementation. Another issue involves dealing with dependencies 
 
