@@ -17,6 +17,9 @@ We are implementing a parallel computational fluid dynamics simulator to run on 
 
 We will be representing the fluid as a simulation grid, which is indexed in by their position, and stores a time and velocity (since velocity and location change based on time). 
 
+![useful image](https://github.com/ajaiswal96/15418-Final-Project/assets/Screen\ Shot\ 2017-04-10\ at\ 2.56.03\ PM.png)
+
+
 We plan to use the GPU by representing the 
 We will be using the Navier-Stokes equation to 
  
