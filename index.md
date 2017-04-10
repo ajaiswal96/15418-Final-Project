@@ -3,6 +3,8 @@
 ### Team
 
 Anubhav Jaiswal  (ajaiswal)
+
+
 Rohit Pillai  (rrpillai)
 
 ### Summary
@@ -11,9 +13,16 @@ We are going to implement a parallel version of a fluid simulator to run on Nvid
 
 ### Background
 
-Fluid 
+We are implementing a parallel computational fluid dynamics simulator to run on GPU's. For the sake of simplicity, we are assuming the fluids to be homogeneous and incompressible. We plan to take advantage of the fact that GPU's are optimized to render textures, and a texture is just a 2D vector storing multiple values. We can thus store our simulation grids as these textures. Instead of having each pixel in the texture map correspond to a particle, we are going to have a grid of particles and store each grid componenet as a pixel texture. 
 
-Incompressible
+We plan to use the GPU by representing the 
+We will be using the Navier-Stokes equation to 
+ 
+
+Homogeneous Incompressible
+
+Navier-Stokes
+
 
 
 ```markdown
