@@ -1,12 +1,20 @@
-## Summary
+## Proposal
+
+### Team
+
+Anubhav Jaiswal  (ajaiswal)
+Rohit Pillai  (rrpillai)
+
+### Summary
 
 We are going to implement a parallel version of a fluid simulator to run on Nvidia GTX 1080 GPU's on the Gates machines and compare that to a sequential implementation on a CPU.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Background
 
-### Markdown
+Fluid 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Incompressible
+
 
 ```markdown
 Syntax highlighted code block
