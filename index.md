@@ -24,7 +24,7 @@ The Navier-Stokes equation for incompressible homogeneous fluids forms the basis
 One of the challenges we have to deal with is a varied density of particles in a grid cell due to advection. For example if we have a force pushing to the right applied to particles on the left, The grid cells on the left will have fewer particles in them as time moves on, and the grid cells on the right will have more. This will lead to divergent execution due to the workload imbalance, hindering peak performance from a parallel implementation. Another issue involves dealing with dependencies because not all the steps will be able to occur in parallel. One run through the fluid velocity grid is necessary to compute the effects of advection; another for the affects of pressure on the grid that accounts for advection; another for the affects of diffusion on the previous grid; and finally one to compute the affects of the external forces on the previous grid. Finding out how to compute these vector grids in parallel and sequentially imposing them on each other will not be simple due to inherent dependencies in their equations. 
 
 ### Resources
-- We plan to use the the GTX 1080 GPU’s on the GHC machines that we used for assignment 2, and thus all our code will most likely be in CUDA.
+- We plan to use the the GTX 1080 GPU’s on the GHC machines that we used for assignment 2, and thus all our code will most likely be in CUDA and C++.
 - We may also need libraries to visualize the fluid simulation and display the liquid flow as time progresses. 
 - All of our preliminary research has been based off a textbook published by NVIDIA that describes how to do fluid simulation. (http://http.developer.nvidia.com/GPUGems/gpugems_ch38.html) 
 - We don’t have an existing code base, and so we will be starting from scratch
@@ -38,7 +38,7 @@ One of the challenges we have to deal with is a varied density of particles in a
 - We also plan to have speedup graphs that show the speedup that we get from our parallel CUDA version over the sequential version that we will implement as well. 
 
 ### Platform Choice 
-- We will be working in C++ and using libraries for the GUI
+- We will be working in C++ and using libraries for the GUI. We would also like to use math libraries to have access to data structures to efficiently store our velocity, time, and position values in the velocity grid. 
 
 ### Schedule
 **April 10:** Finish Proposal 
@@ -54,31 +54,3 @@ One of the challenges we have to deal with is a varied density of particles in a
 **May 6:** If substantial speedup achieved, work on free surface boundaries and 3d implementation, otherwise try to acheive greater speedup
 
 **May 8:** Analyze the performance outputs and write final report
-
-```markdown
-Syntax highlighted code block
-
-# Summary
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ajaiswal96/15418-Final-Project/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
