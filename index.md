@@ -16,7 +16,7 @@ We are implementing a parallel computational fluid dynamics simulator to run on 
 
 We will be representing the fluid as a simulation grid, which is indexed in by their position, and stores a time and velocity (since velocity and location change based on time). In our simulation we need to account for four things: advection, pressure, diffusion, and external forces. Advection refers to the movement of particles from one region to another. Pressure accounts to the fact that particles closer to a force will move with greater velocity than those further away. Diffusion accounts for viscocity of fluids. External forces refer to the actual forces that act on the fluid. 
 
-<img src="https://github.com/ajaiswal96/15418-Final-Project/blob/master/assets/Screen%20Shot%202017-04-10%20at%202.56.03%20PM.png" alt="Navier-Stokes" width="600" height="200">
+<img src="https://github.com/ajaiswal96/15418-Final-Project/blob/master/assets/17857867_1329636113793992_1520634717_n.png" alt="Navier-Stokes" width="600" height="200">
 
 The Navier-Stokes equation for incompressible homogeneous fluids forms the basis of a lot of CFD and is used to describe the motion of a fluid. Given the initial conditions of the fluid (which could be parameters in our implementation), we can solve this equation at each time step to find the state of the fluid at the next step. There are 4 terms in the equation that correspond to the 4 components (advection, pressure, diffusion and external forces) as described above. 
  
