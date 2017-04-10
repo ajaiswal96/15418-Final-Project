@@ -37,7 +37,12 @@ One of the challenges we have to deal with is a varied density of particles in a
 - With respect to our demo, we hope to have a visual representation of our 2-D fluid simulation that shows a fluid varying as time progresses.
 - We also plan to have speedup graphs that show the speedup that we get from our parallel CUDA version over the sequential version that we will implement as well. 
 
-
+### Schedule
+**April 10** Finish Proposal 
+**April 17** Finish Serial Implementation of Fluid Simulation for CPU
+**April 25** Finish 
+**May 1**    Fois
+**May 8**    GgG
 ```markdown
 Syntax highlighted code block
 
