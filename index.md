@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Summary
 
 You can use the [editor on GitHub](https://github.com/ajaiswal96/15418-Final-Project/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
