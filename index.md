@@ -39,10 +39,15 @@ One of the challenges we have to deal with is a varied density of particles in a
 
 ### Schedule
 **April 10** Finish Proposal 
+
 **April 17** Finish Serial Implementation of Fluid Simulation for CPU
+
 **April 25** Finish 
+
 **May 1**    Fois
+
 **May 8**    GgG
+
 ```markdown
 Syntax highlighted code block
 
