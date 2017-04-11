@@ -8,7 +8,7 @@ Rohit Pillai  (rrpillai)
 
 ### Summary
 
-We are going to implement a parallel version of a fluid simulator to run on Nvidia GTX 1080 GPU's on the Gates machines and compare that to a sequential implementation on a CPU. We will be using the Navier-Stokes equation to run the CFD calculations for the simulation.
+We are going to implement a parallel version of a fluid simulator to run on Nvidia GTX 1080 GPU's on the Gates machines and compare that to a parallel implementation on a CPU, using a sequential CPU implementation as baseline. We will be using the Navier-Stokes equation to run the CFD calculations for the simulation.
 
 ### Background
 
@@ -28,29 +28,34 @@ One of the challenges we have to deal with is a varied density of particles in a
 - We may also need libraries to visualize the fluid simulation and display the liquid flow as time progresses. 
 - All of our preliminary research has been based off a textbook published by NVIDIA that describes how to do fluid simulation. (http://http.developer.nvidia.com/GPUGems/gpugems_ch38.html) 
 - We don’t have an existing code base, and so we will be starting from scratch
-- For the sequential implementation, we plan to use one of the Gates machines as well since they have 8 core 3.2 GHz Intel Core i7 processors, which is the fastest processor that we have access to.
+- For the CPU implementation, we plan to use one of the Gates machines as well since they have 8 core 3.2 GHz Intel Core i7 processors, which is the fastest processor that we have access to.
 
 ### Goals 
-- We definitely plan to achieve a parallelized version of the fluid simulator using the Navier Stokes equation, on the GTX 1080 GPU. We also want to make a sequential version of this to run on the CPU so that we can see how much speedup we get from the parallel version over this sequential version.
+- We definitely plan to achieve a parallelized version of the fluid simulator using the Navier Stokes equation, on the GTX 1080 GPU. We also want to make a parallel version of this to run on the CPU so that we can see how much speedup we get from the GPU version over this CPU version.
+- We also want to make a sequential version to run on the CPU to get baseline results with no optimizations.
 - We definitely also want to have some form of GUI to visualize the outputs of our fluid simulation. 
 - Something we hope to achieve is simulating free surface boundaries between 2 different fluids (for example, between air and water). Free surface boundaries are just the points of contact of the 2 fluids. This is different than just a single fluid simulation because when the 2 fluids interact, we will have to take into account their different properties, which will require a lot more computation.
 - Another very far fetched goal would be to convert this 2-D fluid simulation to a 3-D fluid simulation, with all the vectors and equations being in 3-D.
 - With respect to our demo, we hope to have a visual representation of our 2-D fluid simulation that shows a fluid varying as time progresses.
-- We also plan to have speedup graphs that show the speedup that we get from our parallel CUDA version over the sequential version that we will implement as well. 
-- We hope to see significant speedup (>4x) on larger input sizes as the overhead of parallelism will hide benefits on smaller sized inputs. 
+- We also plan to have speedup graphs that show the speedup that we get from our parallel CUDA version over both CPU versions that we will implement as well. 
+- We hope to see significant speedup (>4x) going from the parallel CPU version to the parallel GPU version on larger input sizes as the overhead of parallelism will hide benefits on smaller sized inputs. 
+- We also hope to see both the parallel CPU and GPU versions greatly outperform the baseline sequential CPU implementation.
 
 
 ### Platform Choice 
 - We will be working in C++ and using libraries for the GUI. We would also like to use math libraries to have access to data structures to efficiently store our velocity, time, and position values in the velocity grid. 
 - We choose to use C++ because there are a lot of libraries we can use and it works with CUDA. 
 - We are using the Nvidia GPU's and CUDA because the structure of fluid simulation makes it suitable to be run on CUDA thread blocks. 
+- We will need to use openMP to parallelize the CPU implementation to write the parallel CPU implementation 
 
 ### Schedule
 **April 10:** Finish Proposal 
 
-**April 17:** Finish Serial Implementation of Fluid Simulation for the CPU
+**April 15:** Finish Serial Implementation of Fluid Simulation for the CPU
 
-**April 19:** Finish setting up GUI to see outputs of the simulation
+**April 17:** Finish setting up GUI to see outputs of the simulation 
+
+**April 19:** Finish parallel implementation of Fluid Simulation for the GPU
 
 **April 25:** Have first iteration of parallel GPU implementation working  
 
