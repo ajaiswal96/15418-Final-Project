@@ -5,6 +5,6 @@
 
 int main (int argc, char** argv) {
     printf("starting main\n");
-    serial(1);
+    serial();
     printf("done with main\n");
 }

@@ -3,6 +3,7 @@
 
 #include "serial.h"
 
-void serial(int i){
-    printf("in serial.cpp. the input is %d\n", i);
+void serial(){
+    printf("entered serial\n");
+
 }
