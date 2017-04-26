@@ -1,16 +1,23 @@
-<div id="links">
-<ul>
-<li> <a href="checkpoint.md">Checkpoint</a></li>
-</ul>
-</div>
-
-## Proposal
-
 ### Team
 
 Anubhav Jaiswal  (ajaiswal)
 
 Rohit Pillai  (rrpillai)
+
+## Checkpoint Update
+
+We have updated our schedule to reflect where we currently are. 
+
+### Work Completed Thus Far 
+The majority of our time was spent on understanding the Navier Stokes algorithm and trying to figure out the best way to manipulate and engineer it to fit our needs. 
+
+We have mostly completed a sequential implementation of the fluid simulator. The biggest challenge was understanding the Navier Stokes equation and using data structures that made it both simple to display a visual output, and run all the steps of the Navier Stokes equation. There are currently bugs in the sequential code that prevent a correct output from being generated. The bugs have to do with the way we broke down the Navier Stokes equation and we are looking into ways in which we can rewrite the code. 
+
+We are also deciding on a way to display our output image. Initially we thought about just using openGL and making calls within the program to display images at different stages. We realized this probably wouldn't be the best way to display an animation as there are a lot of overheads invovled. We are now deciding between using the SimpleImage library and the Box2D image library. SimpleImage is much lighter and easier to use though may not have all the functionality we need.
+
+### How We are Doing Overall
+
+
 
 ### Summary
 
