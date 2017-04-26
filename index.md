@@ -17,7 +17,15 @@ We are also deciding on a way to display our output image. Initially we thought 
 
 ### How We are Doing Overall
 
+We are a little behind schedule due to one of the partners being sick and another forgetting about an exam he had when making the schedule, though we are not too worried. When making the sequential implementation we were very focused on having it be easily parallelizable, though now we are just going to make a serial version working on the whole array, and focus on the parallel version independently. 
 
+### Biggest Issues
+
+One of our worries is with displaying the actual output as the fluid simulation is a function of time, and will thus be an animation. Finding a good library which supports animations will be crucial for visualizing our output. Another issue is being able to parallelize despite the fact that the output for each element depends on its neighbors.  
+
+### What We are Going to Present
+
+We hope to have a graphical animation of our results, and present that. For sure we are going to present graphs for speedup between the sequential CPU version, the parallel CPU version, and the parallel GPU version. 
 
 ### Summary
 
@@ -43,10 +51,10 @@ One of the challenges we have to deal with is a varied density of particles in a
 - We don’t have an existing code base, and so we will be starting from scratch
 - For the CPU implementation, we plan to use one of the Gates machines as well since they have 8 core 3.2 GHz Intel Core i7 processors, which is the fastest processor that we have access to.
 
-### Goals 
+### Goals (updated for the checkpoint)
 - We definitely plan to achieve a parallelized version of the fluid simulator using the Navier Stokes equation, on the GTX 1080 GPU. We also want to make a parallel version of this to run on the CPU so that we can see how much speedup we get from the GPU version over this CPU version.
 - We also want to make a sequential version to run on the CPU to get baseline results with no optimizations.
-- We definitely also want to have some form of GUI to visualize the outputs of our fluid simulation. 
+- We hope to have some form of GUI to visualize the outputs of our fluid simulation. 
 - Something we hope to achieve is simulating free surface boundaries between 2 different fluids (for example, between air and water). Free surface boundaries are just the points of contact of the 2 fluids. This is different than just a single fluid simulation because when the 2 fluids interact, we will have to take into account their different properties, which will require a lot more computation.
 - Another very far fetched goal would be to convert this 2-D fluid simulation to a 3-D fluid simulation, with all the vectors and equations being in 3-D.
 - With respect to our demo, we hope to have a visual representation of our 2-D fluid simulation that shows a fluid varying as time progresses.
