@@ -9,7 +9,7 @@ Rohit Pillai  (rrpillai)
 We have updated our schedule to reflect where we currently are. 
 
 ### Work Completed Thus Far 
-The majority of our time was spent on understanding the Navier Stokes algorithm and trying to figure out the best way to manipulate and engineer it to fit our needs. 
+The majority of our time was spent on understanding the Navier Stokes algorithm and trying to figure out the best way to manipulate and engineer it to fit our needs. We did not have much difficulty realizing how to write a sequential algorithm, though we focused on having functions operate on individual elements rather than arrays so we can parallelize it easily. Since each element needs to know information on all the elements around it, it would be trivial to have functions operate on the whole array. It is much more difficult to have per-element functions.
 
 We have mostly completed a sequential implementation of the fluid simulator. The biggest challenge was understanding the Navier Stokes equation and using data structures that made it both simple to display a visual output, and run all the steps of the Navier Stokes equation. There are currently bugs in the sequential code that prevent a correct output from being generated. The bugs have to do with the way we broke down the Navier Stokes equation and we are looking into ways in which we can rewrite the code. 
 
