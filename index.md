@@ -69,19 +69,21 @@ One of the challenges we have to deal with is a varied density of particles in a
 - We are using the Nvidia GPU's and CUDA because the structure of fluid simulation makes it suitable to be run on CUDA thread blocks. 
 - We will need to use openMP to parallelize the CPU implementation to write the parallel CPU implementation 
 
-### Schedule
+### Schedule (updated for checkpoint)
 **April 10:** Finish Proposal 
 
-**April 15:** Finish Serial Implementation of Fluid Simulation for the CPU
+**April 25:** Finish primitive Serial Implementation of Fluid Simulation for the CPU
 
-**April 17:** Finish setting up GUI to see outputs of the simulation 
+**April 28:** Finish more advanced Serial Implementation of the Fluid Simulator for the CPU. This should also include similar data structures to those we are going to use for the parallel implementation. (Anubhav) 
 
-**April 19:** Finish parallel implementation of Fluid Simulation for the GPU
+**April 30:** Have some form of graphical representation of the serial output and make sure the output looks correct. (Rohit)
 
-**April 25:** Have first iteration of parallel GPU implementation working  
+**May 1:** Finish Parallel Implementation of the fluid simulator on the CPU working with openMP (Anubhav & Rohit)
 
-**May 1:** Improve the parallel GPU implementation to obtain peak performance
+**May 5:** Finish Parallel Implementation of the fluid simulator on the GPU working with CUDA (Anubhav & Rohit)
 
-**May 6:** If substantial speedup achieved, work on free surface boundaries and 3d implementation, otherwise try to acheive greater speedup
+**May 7:** Have graphical representations of all three implementations of the simulator (Anubhav & Rohit) 
 
-**May 8:** Analyze the performance outputs and write final report
+**May 8:** Gather performance data from the three versions and generate necessary graphs (Anubhav & Rohit) 
+
+**May 9:** Write and finish the final report and finish the Github.io site (Anubhav & Rohit)
