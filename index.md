@@ -13,11 +13,11 @@ The majority of our time was spent on understanding the Navier Stokes algorithm 
 
 We have mostly completed a sequential implementation of the fluid simulator. The biggest challenge was understanding the Navier Stokes equation and using data structures that made it both simple to display a visual output, and run all the steps of the Navier Stokes equation. There are currently bugs in the sequential code that prevent a correct output from being generated. The bugs have to do with the way we broke down the Navier Stokes equation and we are looking into ways in which we can rewrite the code. 
 
-We are also deciding on a way to display our output image. Initially we thought about just using openGL and making calls within the program to display images at different stages. We realized this probably wouldn't be the best way to display an animation as there are a lot of overheads invovled. We are now deciding between using the SimpleImage library and the Box2D image library. SimpleImage is much lighter and easier to use though may not have all the functionality we need.
+We are also deciding on a way to display our output image. Initially we thought about just using openGL and making calls within the program to display images at different stages. We realized this probably wouldn't be the best way to display an animation as there is a lot of overhead invovled. We are now deciding between using the SimpleImage library, the Box2D image library and the MantaFlow library. SimpleImage is much lighter and easier to use though may not have all the functionality we need. The latter 2 libraries are very suited to rendering fluid simulations, although there doesn't seem to be too much documentation on them. Thus, we will focus on grasping the functionality of those libraries better. 
 
 ### How We are Doing Overall
 
-We are a little behind schedule due to one of the partners being sick and another forgetting about an exam he had when making the schedule, though we are not too worried. When making the sequential implementation we were very focused on having it be easily parallelizable, though now we are just going to make a serial version working on the whole array, and focus on the parallel version independently. 
+When making the sequential implementation we were very focused on having it be easily parallelizable, which means that once we are done with the serial implementation, we can almost immediately convert it to a parallel version by just converting each function into a kernel. Thus, our main aim right now is to finish the serial implementation as soon as possible, so that we can convert it to a parallel one.  
 
 ### Biggest Issues
 
