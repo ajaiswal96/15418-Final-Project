@@ -1,3 +1,9 @@
+<div id="links">
+<ul>
+<li> <a href="checkpoint.md">Checkpoint</a></li>
+</ul>
+</div>
+
 ## Proposal
 
 ### Team
