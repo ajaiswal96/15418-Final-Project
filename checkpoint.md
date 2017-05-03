@@ -9,23 +9,15 @@ Rohit Pillai  (rrpillai)
 We have updated our schedule to reflect where we currently are. 
 
 ### Work Completed Thus Far 
-The majority of our time was spent on understanding the Navier Stokes algorithm and trying to figure out the best way to manipulate and engineer it to fit our needs. We did not have much difficulty realizing how to write a sequential algorithm, though we focused on having functions operate on individual elements rather than arrays so we can parallelize it easily. Since each element needs to know information on all the elements around it, it would be trivial to have functions operate on the whole array. It is much more difficult to have per-element functions.
+The majority of our time was spent on understanding the Navier Stokes algorithm and trying to figure out the best way to manipulate and engineer it to fit our needs. 
 
 We have mostly completed a sequential implementation of the fluid simulator. The biggest challenge was understanding the Navier Stokes equation and using data structures that made it both simple to display a visual output, and run all the steps of the Navier Stokes equation. There are currently bugs in the sequential code that prevent a correct output from being generated. The bugs have to do with the way we broke down the Navier Stokes equation and we are looking into ways in which we can rewrite the code. 
 
-We are also deciding on a way to display our output image. Initially we thought about just using openGL and making calls within the program to display images at different stages. We realized this probably wouldn't be the best way to display an animation as there is a lot of overhead invovled. We are now deciding between using the SimpleImage library, the Box2D image library and the MantaFlow library. SimpleImage is much lighter and easier to use though may not have all the functionality we need. The latter 2 libraries are very suited to rendering fluid simulations, although there doesn't seem to be too much documentation on them. Thus, we will focus on grasping the functionality of those libraries better. 
+We are also deciding on a way to display our output image. Initially we thought about just using openGL and making calls within the program to display images at different stages. We realized this probably wouldn't be the best way to display an animation as there are a lot of overheads invovled. We are now deciding between using the SimpleImage library and the Box2D image library. SimpleImage is much lighter and easier to use though may not have all the functionality we need.
 
 ### How We are Doing Overall
 
-When making the sequential implementation we were very focused on having it be easily parallelizable, which means that once we are done with the serial implementation, we can almost immediately convert it to a parallel version by just converting each function into a kernel. Thus, our main aim right now is to finish the serial implementation as soon as possible, so that we can convert it to a parallel one.  
 
-### Biggest Issues
-
-One of our worries is with displaying the actual output as the fluid simulation is a function of time, and will thus be an animation. Finding a good library which supports animations will be crucial for visualizing our output. Another issue is being able to parallelize despite the fact that the output for each element depends on its neighbors.  
-
-### What We are Going to Present
-
-We hope to have a graphical animation of our results, and present that. For sure we are going to present graphs for speedup between the sequential CPU version, the parallel CPU version, and the parallel GPU version. 
 
 ### Summary
 
@@ -51,10 +43,10 @@ One of the challenges we have to deal with is a varied density of particles in a
 - We don’t have an existing code base, and so we will be starting from scratch
 - For the CPU implementation, we plan to use one of the Gates machines as well since they have 8 core 3.2 GHz Intel Core i7 processors, which is the fastest processor that we have access to.
 
-### Goals (updated for the checkpoint)
+### Goals 
 - We definitely plan to achieve a parallelized version of the fluid simulator using the Navier Stokes equation, on the GTX 1080 GPU. We also want to make a parallel version of this to run on the CPU so that we can see how much speedup we get from the GPU version over this CPU version.
 - We also want to make a sequential version to run on the CPU to get baseline results with no optimizations.
-- We hope to have some form of GUI to visualize the outputs of our fluid simulation. 
+- We definitely also want to have some form of GUI to visualize the outputs of our fluid simulation. 
 - Something we hope to achieve is simulating free surface boundaries between 2 different fluids (for example, between air and water). Free surface boundaries are just the points of contact of the 2 fluids. This is different than just a single fluid simulation because when the 2 fluids interact, we will have to take into account their different properties, which will require a lot more computation.
 - Another very far fetched goal would be to convert this 2-D fluid simulation to a 3-D fluid simulation, with all the vectors and equations being in 3-D.
 - With respect to our demo, we hope to have a visual representation of our 2-D fluid simulation that shows a fluid varying as time progresses.
@@ -69,21 +61,19 @@ One of the challenges we have to deal with is a varied density of particles in a
 - We are using the Nvidia GPU's and CUDA because the structure of fluid simulation makes it suitable to be run on CUDA thread blocks. 
 - We will need to use openMP to parallelize the CPU implementation to write the parallel CPU implementation 
 
-### Schedule (updated for checkpoint)
+### Schedule
 **April 10:** Finish Proposal 
 
-**April 25:** Finish primitive Serial Implementation of Fluid Simulation for the CPU
+**April 15:** Finish Serial Implementation of Fluid Simulation for the CPU
 
-**April 28:** Finish more advanced Serial Implementation of the Fluid Simulator for the CPU. This should also include similar data structures to those we are going to use for the parallel implementation. (Anubhav) 
+**April 17:** Finish setting up GUI to see outputs of the simulation 
 
-**April 30:** Have some form of graphical representation of the serial output and make sure the output looks correct. (Rohit)
+**April 19:** Finish parallel implementation of Fluid Simulation for the GPU
 
-**May 1:** Finish Parallel Implementation of the fluid simulator on the CPU working with openMP (Anubhav & Rohit)
+**April 25:** Have first iteration of parallel GPU implementation working  
 
-**May 5:** Finish Parallel Implementation of the fluid simulator on the GPU working with CUDA (Anubhav & Rohit)
+**May 1:** Improve the parallel GPU implementation to obtain peak performance
 
-**May 7:** Have graphical representations of all three implementations of the simulator (Anubhav & Rohit) 
+**May 6:** If substantial speedup achieved, work on free surface boundaries and 3d implementation, otherwise try to acheive greater speedup
 
-**May 8:** Gather performance data from the three versions and generate necessary graphs (Anubhav & Rohit) 
-
-**May 9:** Write and finish the final report and finish the Github.io site (Anubhav & Rohit)
+**May 8:** Analyze the performance outputs and write final report
