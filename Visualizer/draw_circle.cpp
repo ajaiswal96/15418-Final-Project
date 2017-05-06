@@ -25,18 +25,42 @@ std::ifstream sim_file;
 int iteration;
 std::vector< std::vector<float> > positions;
 
+void preprocess() {
+	int iter = 0;
+	sim_file.open("simulation_data.txt");
+	std::getline(sim_file, buf); 
+	radius = std::stof(buf) * 100;
+	std::getline(sim_file, buf); 
+	num_iters = std::stoi(buf);
+	positions.resize(num_iters);
+	while (!sim_file.eof()) {
+	    std::getline(sim_file, buf);
+	    //std::cout << buf << "\n";
+	    if (buf.length() == 0) { break; }
+	    if (buf.compare("DONE WITH AN ITERATION") == 0) {
+		//std::cout<<"LOL " << iter << "\n";
+		iter++;
+	    } else {
+		positions[iter].push_back(std::stof(buf));
+	    }
+	}
+	//std::cout  << "DONE \n";
+	sim_file.close();
+}
+
 void update(int x) {
-	std::cout <<"FML\n";
 	if (iteration < num_iters) {
 	    iteration++;
-	    std::cout << iteration;
 	    glutPostRedisplay();
-	    glutTimerFunc(10000, update, 0);
+	    glutTimerFunc(100, update, 0);
+	} else {
+	    std::cout << "DONE\n";
 	}
 }
  
 int main(int argc, char **argv)
 {
+	preprocess();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(WIDTH, HEIGHT);
@@ -45,7 +69,7 @@ int main(int argc, char **argv)
 	init();
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);
-	glutTimerFunc(10000, update, 0);
+	glutTimerFunc(100, update, 0);
 	glutMainLoop();
  
 	return 0;
@@ -79,28 +103,8 @@ void init()
 	//Assign the clear screen color
 	//Format (Red, Green, Blue, Alpha)
 	//Values should remain normalized between 0 and 1
-	glClearColor(0.0, 0.0, 1.0, 0.0);
+	glClearColor(1.0, 1.0, 1.0, 0.0);
 
-	int iter = 0;
-	sim_file.open("simulation_data.txt");
-	std::getline(sim_file, buf); 
-	radius = std::stof(buf) * 100;
-	std::getline(sim_file, buf); 
-	num_iters = std::stoi(buf);
-	positions.resize(num_iters);
-	while (!sim_file.eof()) {
-	    std::getline(sim_file, buf);
-	    //std::cout << buf << "\n";
-	    if (buf.length() == 0) { break; }
-	    if (buf.compare("DONE WITH AN ITERATION") == 0) {
-		//std::cout<<"LOL " << iter << "\n";
-		iter++;
-	    } else {
-		positions[iter].push_back(std::stof(buf));
-	    }
-	}
-	//std::cout  << "DONE \n";
-	sim_file.close();
 }
  
 void reshape(int w, int h)
@@ -149,6 +153,12 @@ void display()
 			
 				for(double i = 0; i < 2 * PI; i += PI / 12) //<-- Change this Value
  					glVertex3f(positions[iteration][j]*WIDTH + cos(i) * radius, positions[iteration][j+1]*HEIGHT+sin(i) * radius, 0.0);
+					/*if (iteration > 0 && positions[iteration][j] != positions[iteration-1][j]) {
+					    std::cout << "X POSITION IS DIFFERENT FOR " << j/2 << " AND THE DIFFERENCE IS " << (positions[iteration][j]-positions[iteration-1][j])*WIDTH<< "\n";
+					}
+					if (iteration > 0 && positions[iteration][j+1] != positions[iteration-1][j+1]) {
+					    std::cout << "Y POSITION IS DIFFERENT FOR " << j/2 << " AND THE DIFFERENCE IS " << (positions[iteration][j+1]-positions[iteration-1][j+1])*WIDTH<< "\n";
+					}*/
 			glEnd(); }
 			//std::cout << iteration;
 			/*if (iteration < num_iters) {
