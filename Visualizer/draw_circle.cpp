@@ -9,6 +9,7 @@
  
 #define WIDTH 1000
 #define HEIGHT 1000
+#define ITER_REPEAT 15
  
 float pos[6] = {-1.0, -1.0, 1.0, 1.0, 30.0, -30.0};
 
@@ -23,6 +24,16 @@ std::string buf;
 std::ifstream sim_file;
 int iteration;
 std::vector< std::vector<float> > positions;
+
+void update(int x) {
+	std::cout <<"FML\n";
+	if (iteration < num_iters) {
+	    iteration++;
+	    std::cout << iteration;
+	    glutPostRedisplay();
+	    glutTimerFunc(10000, update, 0);
+	}
+}
  
 int main(int argc, char **argv)
 {
@@ -34,6 +45,7 @@ int main(int argc, char **argv)
 	init();
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);
+	glutTimerFunc(10000, update, 0);
 	glutMainLoop();
  
 	return 0;
@@ -75,17 +87,19 @@ void init()
 	radius = std::stof(buf) * 100;
 	std::getline(sim_file, buf); 
 	num_iters = std::stoi(buf);
-	std::cout  << "DONE \n";
 	positions.resize(num_iters);
 	while (!sim_file.eof()) {
 	    std::getline(sim_file, buf);
-	    if (buf.length() == 0) break;
+	    //std::cout << buf << "\n";
+	    if (buf.length() == 0) { break; }
 	    if (buf.compare("DONE WITH AN ITERATION") == 0) {
+		//std::cout<<"LOL " << iter << "\n";
 		iter++;
 	    } else {
 		positions[iter].push_back(std::stof(buf));
 	    }
 	}
+	//std::cout  << "DONE \n";
 	sim_file.close();
 }
  
@@ -106,6 +120,7 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
  
 	glPushMatrix();
+        
  
 		//Tells the camera where to be and where to look
 		//Format (camera position x,y,z, focal point x,y,z, camera orientation x,y,z)
@@ -118,6 +133,7 @@ void display()
 			glColor3f(1.0, 0, 0);  //Some type of blue
  
 			//Draw Circle
+			//std::cout << iteration << " " << positions.size() << " " <<positions[iteration].size() << "\n";
 			for(int j = 0; j < positions[iteration].size(); j+= 2) {
 			glBegin(GL_POLYGON);
 				//Change the 6 to 12 to increase the steps (number of drawn points) for a smoother circle
@@ -134,10 +150,11 @@ void display()
 				for(double i = 0; i < 2 * PI; i += PI / 12) //<-- Change this Value
  					glVertex3f(positions[iteration][j]*WIDTH + cos(i) * radius, positions[iteration][j+1]*HEIGHT+sin(i) * radius, 0.0);
 			glEnd(); }
-			std::cout << iteration;
-			if (iteration < num_iters) {
+			//std::cout << iteration;
+			/*if (iteration < num_iters) {
 			    iteration++;
-			}
+			    num_times_per_iteration = 0;
+			} */
 			//Draw Circle
  
 //		glPopMatrix();
@@ -146,4 +163,5 @@ void display()
  
 	glFlush();
 	glutSwapBuffers();
+	//glFinish();
 }
