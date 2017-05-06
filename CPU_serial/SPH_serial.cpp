@@ -72,7 +72,6 @@ void freeState(CurrState* currState) {
 //now we need to compute densities. We are going to compute densities once for
 //each ij ji pair since they are the same.
 void calculateDensity(Parameters* params, CurrState* currState) {
-  printf("beginning cD\n");
   int numParticles = currState->numParticles;
   float size = params->size;
   float mass = currState->mass;
@@ -97,12 +96,11 @@ void calculateDensity(Parameters* params, CurrState* currState) {
       float z_3 = z * z * z;
       if (z > 0) {
         float densities_ij = outerConstant * z_3;
-        densities[i] = densities_ij;
-        densities[j] = densities_ij;
+        densities[i] += densities_ij;
+        densities[j] += densities_ij;
       }
     }
   }
-  printf("end cD\n");
 }
 
 void calculateAcceleration(Parameters* params, CurrState* currState) {
@@ -191,29 +189,28 @@ void boundaryCheck(CurrState* currState) {
   const float YMIN = 0.0;
   const float XMAX = 1.0;
   const float YMAX = 1.0;
-  unsigned int offset = 0;
 
   int numParticles = currState->numParticles;
   float* velocities_full = currState->velocities_full;
   float* velocities_half = currState->velocities_half;
   float* positions = currState->positions;
 
-  for (unsigned int i = 0; i < numParticles; ++i, offset+=2) {
+  for (unsigned int i = 0; i < numParticles; ++i, positions+=2,  velocities_full+=2, velocities_half+=2) {
 
-    if (positions[offset + 0] < XMIN) {
-      reflect (0, XMIN, &positions[offset], &velocities_full[offset], &velocities_half[offset]);
+    if (positions[0] < XMIN) {
+      reflect (0, XMIN, positions, velocities_full, velocities_half);
     }
 
-    if (positions[offset + 0] > XMAX) {
-      reflect (0, XMAX, &positions[offset], &velocities_full[offset], &velocities_half[offset]);
+    if (positions[0] > XMAX) {
+      reflect (0, XMAX, positions, velocities_full, velocities_half);
     }
 
-    if (positions[offset + 1] < YMIN) {
-      reflect (1, YMIN, &positions[offset], &velocities_full[offset], &velocities_half[offset]);
+    if (positions[1] < YMIN) {
+      reflect (1, YMIN, positions, velocities_full, velocities_half);
     }
 
-    if (positions[offset + 1] > YMAX) {
-      reflect (1, YMAX, &positions[offset], &velocities_full[offset], &velocities_half[offset]);
+    if (positions[1] > YMAX) {
+      reflect (1, YMAX, positions, velocities_full, velocities_half);
     }
   }
 }
@@ -252,7 +249,7 @@ void velocityStart (CurrState* currState, double dt) {
   }
 
   for (unsigned int i = 0; i < 2*numParticles; ++i) {
-    velocities_full[i] =+ accelerations[i] * dt;
+    velocities_full[i] += accelerations[i] * dt;
   }
 
   for (unsigned int i = 0; i < 2*numParticles; ++i) {
@@ -278,9 +275,8 @@ int sphereDropInit(float x, float y) {
 CurrState* initialParticlePlacement(Parameters* params, initialFluidShape_fun shapeFun) {
   float size = params->size;
   float adjSize = size/OVERLAP_COEFF;
-
-  int iterations = 1.0f/adjSize;
-
+  int newCount = 0;
+  int iterations = 1.0f/adjSize + 1;
   int inRegionCount = 0;
   for (unsigned int i = 0; i < iterations; ++i){
     for (unsigned int j = 0; j < iterations; ++j) {
@@ -327,14 +323,14 @@ void normalizeMasses(CurrState* currState, Parameters* params) {
 }
 
 CurrState* initParticles(Parameters* params) {
-  CurrState* currState = initialParticlePlacement(params, cornerBoxInit);
+  CurrState* currState = initialParticlePlacement(params, sphereDropInit);
   normalizeMasses(currState, params);
   return currState;
 }
 
 void initParams(Parameters* params) {
   params->fileName = "output.out";
-  params->numFrames = 40;
+  params->numFrames = 400;
   params->stepsPerFrame = 100;
   params->dt = 1e-4;
   params->size = 5e-2;
@@ -349,7 +345,7 @@ void errorCheck(CurrState* currState) {
   float currX;
   float currY;
 
-  for (unsigned int i = 0; i < numParticles; i++) {
+  for (unsigned int i = 0; i < numParticles; ++i) {
     int xIndex = GET_X(i);
     int yIndex = GET_Y(i);
 
@@ -357,11 +353,11 @@ void errorCheck(CurrState* currState) {
     currY = currState->positions[yIndex];
 
     //check that x and y are in bounds and stop program execution if not
-    printf("currX is %f\n",currX);
-    printf("currY is %f\n",currY);
+    //printf("currX is %f\n",currX);
+    //printf("currY is %f\n",currY);
 
-    //assert(currX >=0 || currX <=1);
-    //assert(currY >=0 || currY <=1);
+    assert(currX >=0 || currX <=1);
+    assert(currY >=0 || currY <=1);
   }
 }
 
@@ -375,7 +371,7 @@ int run_main() {
   string fileName = params.fileName;
   int numFrames = params.numFrames;
   int stepsPerFrame = params.stepsPerFrame;
-  int timeStep = params.dt;
+  float timeStep = params.dt;
   int numParticles = currState->numParticles;
 
   calculateAcceleration(&params, currState);
@@ -408,6 +404,12 @@ int run_main() {
         //ofstream data_file;
         //data_file.open("simulation_data.txt", ios::out | ios::app);
         for (int i=0; i < numParticles; i++) {
+            if (i == 0) {
+                printf("x: %f, %f\n", currState->positions[GET_X(i)], currState->positions[GET_Y(i)]);
+                printf("d: %f, %f\n", currState->densities[GET_X(i)], currState->densities[GET_Y(i)]);
+                printf("a: %f, %f\n", currState->accelerations[GET_X(i)], currState->accelerations[GET_Y(i)]);
+                printf("v: %f, %f\n", currState->velocities_full[GET_X(i)], currState->velocities_full[GET_Y(i)]);
+            }
     	  data_file << currState->positions[GET_X(i)] << "\n";
 	  data_file << currState->positions[GET_Y(i)] << "\n";
   	}
