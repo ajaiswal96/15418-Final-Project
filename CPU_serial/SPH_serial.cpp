@@ -11,6 +11,7 @@ using namespace std;
 #include <float.h>
 #include <string.h>
 #include <assert.h>
+#include <fstream>
 
 #define GET_X(x) (2*x)
 #define GET_Y(y) (2*y + 1)
@@ -333,7 +334,7 @@ CurrState* initParticles(Parameters* params) {
 
 void initParams(Parameters* params) {
   params->fileName = "output.out";
-  params->numFrames = 400;
+  params->numFrames = 40;
   params->stepsPerFrame = 100;
   params->dt = 1e-4;
   params->size = 5e-2;
@@ -379,6 +380,20 @@ int run_main() {
 
   calculateAcceleration(&params, currState);
   velocityStart(currState, timeStep);
+
+  /* Write to file */
+  ofstream data_file;
+  data_file.open("simulation_data.txt", ios::out | ios::app);
+  data_file << params.size << "\n";
+  data_file << numFrames * stepsPerFrame << "\n";
+  for (int i=0; i < numParticles; i++) {
+    data_file << currState->positions[GET_X(i)] << "\n";
+    data_file << currState->positions[GET_Y(i)] << "\n";
+  }
+  data_file << "DONE WITH AN ITERATION\n";
+  //data_file.close();
+  /* End of write */
+
   errorCheck(currState);
 
   //iterate through all the frames in the image
@@ -388,11 +403,24 @@ int run_main() {
       calculateAcceleration(&params, currState);
       //printf("calculaate acceleration returned on loop %d\n",j);
       velocityStep(currState, timeStep);
+
+        /* Write to file */
+        //ofstream data_file;
+        //data_file.open("simulation_data.txt", ios::out | ios::app);
+        for (int i=0; i < numParticles; i++) {
+    	  data_file << currState->positions[GET_X(i)] << "\n";
+	  data_file << currState->positions[GET_Y(i)] << "\n";
+  	}
+  	data_file << "DONE WITH AN ITERATION\n";
+  	//data_file.close();
+  	/* End of write */
+
       //printf("379\n");
       errorCheck(currState);
       //printf("iterating through frame %d, step %d\n", frame, j);
     }
   }
+  data_file.close();
   freeState(currState);
 }
 
