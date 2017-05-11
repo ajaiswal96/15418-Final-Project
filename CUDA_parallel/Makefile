@@ -4,9 +4,9 @@ all: $(objects)
 		nvcc -arch=sm_20 $(objects) -o app
 
 %.o: %.cpp
-		nvcc -x cu -arch=sm_20 -I. -dc $< -o $@
+		g++ -m64 -O3 -Wall -g -c -o $@
 %.o: %.cu
-		nvcc -x cu -arch=sm_20 -I. -dc $< -o $@
+		nvcc -O3 -m64 cu -arch=compute_35 -I. -dc $< -o $@
 
 clean:
 		rm -f *.o app
