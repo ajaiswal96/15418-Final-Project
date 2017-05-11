@@ -11,7 +11,7 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/2.8.11/CMakeCCompiler.cmake"
   "CMakeFiles/2.8.11/CMakeCXXCompiler.cmake"
   "CMakeFiles/2.8.11/CMakeSystem.cmake"
-  "CMakeFiles/PBF_15418.dir/PBF_15418_generated_parallel.cu.o.depend"
+  "CMakeFiles/parallel.dir/parallel_generated_parallel.cu.o.depend"
   "/usr/share/cmake/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake"
@@ -51,5 +51,5 @@ SET(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/PBF_15418.dir/DependInfo.cmake"
+  "CMakeFiles/parallel.dir/DependInfo.cmake"
   )

@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11    CMakeFiles/parallel.dir/main.cpp.o CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o  -o parallel -rdynamic /usr/local/depot/cuda-8.0/lib64/libcudart.so /usr/local/depot/cuda-8.0/lib64/libcudart.so -lglfw -lGLEW -lGLU -lGL -lSM -lICE -lX11 -lXext -Wl,-rpath,/usr/local/depot/cuda-8.0/lib64 

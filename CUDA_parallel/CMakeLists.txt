@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(PBF_15418)
+project(parallel)
 
 #find_package(glfw3 3.2 REQUIRED)
 find_package(GLEW REQUIRED)
@@ -26,14 +26,11 @@ include_directories(${GLEW_INCLUDE_DIRS})
 include_directories(${OPENGL_INCLUDE_DIR})
 
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-gencode arch=compute_52,code=sm_52 -gencode arch=compute_61,code=sm_61 -std=c++11)
-#set(CUDA_LIBRARY saxpy)
-#set(CUDA_SOURCES saxpy.cu)
-#cuda_add_library(${CUDA_LIBRARY} ${CUDA_SOURCES})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES main.cpp parallel.h)
 
-cuda_add_executable(PBF_15418 ${SOURCE_FILES} parallel.cu)
+cuda_add_executable(parallel ${SOURCE_FILES} parallel.cu)
 
-target_link_libraries(PBF_15418 ${CUDA_LIBRARIES} ${CUDA_LIBRARY} ${GLFW_LIBRARIES} ${GLEW_LIBRARIES} ${OPENGL_LIBRARIES})
+target_link_libraries(parallel ${CUDA_LIBRARIES} ${CUDA_LIBRARY} ${GLFW_LIBRARIES} ${GLEW_LIBRARIES} ${OPENGL_LIBRARIES})

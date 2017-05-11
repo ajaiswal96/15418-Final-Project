@@ -56,38 +56,38 @@ CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-
 CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir
 
 #=============================================================================
-# Target rules for target CMakeFiles/PBF_15418.dir
+# Target rules for target CMakeFiles/parallel.dir
 
 # All Build rule for target.
-CMakeFiles/PBF_15418.dir/all:
-	$(MAKE) -f CMakeFiles/PBF_15418.dir/build.make CMakeFiles/PBF_15418.dir/depend
-	$(MAKE) -f CMakeFiles/PBF_15418.dir/build.make CMakeFiles/PBF_15418.dir/build
+CMakeFiles/parallel.dir/all:
+	$(MAKE) -f CMakeFiles/parallel.dir/build.make CMakeFiles/parallel.dir/depend
+	$(MAKE) -f CMakeFiles/parallel.dir/build.make CMakeFiles/parallel.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles  1 2
-	@echo "Built target PBF_15418"
-.PHONY : CMakeFiles/PBF_15418.dir/all
+	@echo "Built target parallel"
+.PHONY : CMakeFiles/parallel.dir/all
 
 # Include target in all.
-all: CMakeFiles/PBF_15418.dir/all
+all: CMakeFiles/parallel.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/PBF_15418.dir/rule: cmake_check_build_system
+CMakeFiles/parallel.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/PBF_15418.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/parallel.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles 0
-.PHONY : CMakeFiles/PBF_15418.dir/rule
+.PHONY : CMakeFiles/parallel.dir/rule
 
 # Convenience name for target.
-PBF_15418: CMakeFiles/PBF_15418.dir/rule
-.PHONY : PBF_15418
+parallel: CMakeFiles/parallel.dir/rule
+.PHONY : parallel
 
 # clean rule for target.
-CMakeFiles/PBF_15418.dir/clean:
-	$(MAKE) -f CMakeFiles/PBF_15418.dir/build.make CMakeFiles/PBF_15418.dir/clean
-.PHONY : CMakeFiles/PBF_15418.dir/clean
+CMakeFiles/parallel.dir/clean:
+	$(MAKE) -f CMakeFiles/parallel.dir/build.make CMakeFiles/parallel.dir/clean
+.PHONY : CMakeFiles/parallel.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/PBF_15418.dir/clean
+clean: CMakeFiles/parallel.dir/clean
 .PHONY : clean
 
 #=============================================================================
