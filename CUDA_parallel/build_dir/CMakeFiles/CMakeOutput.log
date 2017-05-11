@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/2.8.11/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/2.8.11/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,35 +23,35 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/2.8.11/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/2.8.11/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec3925543327/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3925543327.dir/build.make CMakeFiles/cmTryCompileExec3925543327.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3925543327.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3925543327.dir/testCCompiler.c.o   -c /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTryCompileExec3925543327
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3925543327.dir/link.txt --verbose=1
-/usr/bin/cc         CMakeFiles/cmTryCompileExec3925543327.dir/testCCompiler.c.o  -o cmTryCompileExec3925543327 -rdynamic 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2397726029/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2397726029.dir/build.make CMakeFiles/cmTryCompileExec2397726029.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2397726029.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2397726029.dir/testCCompiler.c.o   -c /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec2397726029
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2397726029.dir/link.txt --verbose=1
+/usr/bin/cc         CMakeFiles/cmTryCompileExec2397726029.dir/testCCompiler.c.o  -o cmTryCompileExec2397726029 -rdynamic 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec723970452/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec723970452.dir/build.make CMakeFiles/cmTryCompileExec723970452.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
-Linking C executable cmTryCompileExec723970452
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec723970452.dir/link.txt --verbose=1
-/usr/bin/cc       -v CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec723970452 -rdynamic  
+Run Build Command:/usr/bin/gmake "cmTryCompileExec725794262/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec725794262.dir/build.make CMakeFiles/cmTryCompileExec725794262.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec725794262
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec725794262.dir/link.txt --verbose=1
+/usr/bin/cc       -v CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec725794262 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
@@ -61,24 +61,24 @@ Thread model: posix
 gcc version 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) 
 COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec723970452' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec723970452 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec725794262' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec725794262 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec723970452/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec723970452.dir/build.make CMakeFiles/cmTryCompileExec723970452.dir/build]
-  ignore line: [gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTryCompileExec723970452]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec723970452.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc       -v CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec723970452 -rdynamic  ]
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec725794262/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec725794262.dir/build.make CMakeFiles/cmTryCompileExec725794262.dir/build]
+  ignore line: [gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec725794262]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec725794262.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc       -v CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec725794262 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper]
@@ -88,8 +88,8 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) ]
   ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec723970452' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec723970452 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec725794262' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec725794262 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
     arg [/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--no-add-needed] ==> ignore
@@ -101,7 +101,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec723970452] ==> ignore
+    arg [cmTryCompileExec725794262] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o] ==> ignore
@@ -110,7 +110,7 @@ Parsed C implicit link information from above output:
     arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
     arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
     arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..]
-    arg [CMakeFiles/cmTryCompileExec723970452.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec725794262.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -137,32 +137,32 @@ Parsed C implicit link information from above output:
 
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec1795559860/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1795559860.dir/build.make CMakeFiles/cmTryCompileExec1795559860.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1795559860.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1795559860.dir/testCXXCompiler.cxx.o -c /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec1795559860
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1795559860.dir/link.txt --verbose=1
-/usr/bin/c++          CMakeFiles/cmTryCompileExec1795559860.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec1795559860 -rdynamic 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3707523813/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3707523813.dir/build.make CMakeFiles/cmTryCompileExec3707523813.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3707523813.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3707523813.dir/testCXXCompiler.cxx.o -c /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec3707523813
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3707523813.dir/link.txt --verbose=1
+/usr/bin/c++          CMakeFiles/cmTryCompileExec3707523813.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3707523813 -rdynamic 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec3668079530/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3668079530.dir/build.make CMakeFiles/cmTryCompileExec3668079530.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTryCompileExec3668079530
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3668079530.dir/link.txt --verbose=1
-/usr/bin/c++        -v CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3668079530 -rdynamic  
+Run Build Command:/usr/bin/gmake "cmTryCompileExec770131220/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec770131220.dir/build.make CMakeFiles/cmTryCompileExec770131220.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec770131220
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec770131220.dir/link.txt --verbose=1
+/usr/bin/c++        -v CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec770131220 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
@@ -172,24 +172,24 @@ Thread model: posix
 gcc version 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) 
 COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3668079530' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec3668079530 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec770131220' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec770131220 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec3668079530/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3668079530.dir/build.make CMakeFiles/cmTryCompileExec3668079530.dir/build]
-  ignore line: [gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTryCompileExec3668079530]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3668079530.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++        -v CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3668079530 -rdynamic  ]
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec770131220/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec770131220.dir/build.make CMakeFiles/cmTryCompileExec770131220.dir/build]
+  ignore line: [gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec770131220]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec770131220.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++        -v CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec770131220 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper]
@@ -199,8 +199,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.8.5 20150623 (Red Hat 4.8.5-4) (GCC) ]
   ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3668079530' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec3668079530 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec770131220' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec770131220 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
     arg [/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--no-add-needed] ==> ignore
@@ -212,7 +212,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec3668079530] ==> ignore
+    arg [cmTryCompileExec770131220] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o] ==> ignore
@@ -221,7 +221,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
     arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
     arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..]
-    arg [CMakeFiles/cmTryCompileExec3668079530.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec770131220.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -246,92 +246,92 @@ Parsed CXX implicit link information from above output:
 
 
 Determining if the function XOpenDisplay exists in the /usr/lib64/libX11.so;/usr/lib64/libXext.so passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec2287939470/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2287939470.dir/build.make CMakeFiles/cmTryCompileExec2287939470.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec2287939470.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTryCompileExec2287939470.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec2287939470
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2287939470.dir/link.txt --verbose=1
-/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=XOpenDisplay    CMakeFiles/cmTryCompileExec2287939470.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2287939470 -rdynamic -lX11 -lXext 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2736689358/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2736689358.dir/build.make CMakeFiles/cmTryCompileExec2736689358.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2736689358.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTryCompileExec2736689358.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec2736689358
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2736689358.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=XOpenDisplay    CMakeFiles/cmTryCompileExec2736689358.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2736689358 -rdynamic -lX11 -lXext 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Determining if the function gethostbyname exists passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec2086882213/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2086882213.dir/build.make CMakeFiles/cmTryCompileExec2086882213.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec2086882213.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTryCompileExec2086882213.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec2086882213
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2086882213.dir/link.txt --verbose=1
-/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTryCompileExec2086882213.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2086882213 -rdynamic 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec283912832/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec283912832.dir/build.make CMakeFiles/cmTryCompileExec283912832.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec283912832.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTryCompileExec283912832.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec283912832
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec283912832.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTryCompileExec283912832.dir/CheckFunctionExists.c.o  -o cmTryCompileExec283912832 -rdynamic 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Determining if the function connect exists passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec3065997063/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3065997063.dir/build.make CMakeFiles/cmTryCompileExec3065997063.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3065997063.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTryCompileExec3065997063.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec3065997063
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3065997063.dir/link.txt --verbose=1
-/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTryCompileExec3065997063.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3065997063 -rdynamic 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1640819202/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1640819202.dir/build.make CMakeFiles/cmTryCompileExec1640819202.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1640819202.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTryCompileExec1640819202.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1640819202
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1640819202.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTryCompileExec1640819202.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1640819202 -rdynamic 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Determining if the function remove exists passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec4071578083/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4071578083.dir/build.make CMakeFiles/cmTryCompileExec4071578083.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec4071578083.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTryCompileExec4071578083.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec4071578083
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4071578083.dir/link.txt --verbose=1
-/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTryCompileExec4071578083.dir/CheckFunctionExists.c.o  -o cmTryCompileExec4071578083 -rdynamic 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1995769626/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1995769626.dir/build.make CMakeFiles/cmTryCompileExec1995769626.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1995769626.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTryCompileExec1995769626.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1995769626
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1995769626.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTryCompileExec1995769626.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1995769626 -rdynamic 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Determining if the function shmat exists passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec39436501/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec39436501.dir/build.make CMakeFiles/cmTryCompileExec39436501.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec39436501.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTryCompileExec39436501.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec39436501
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec39436501.dir/link.txt --verbose=1
-/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTryCompileExec39436501.dir/CheckFunctionExists.c.o  -o cmTryCompileExec39436501 -rdynamic 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4145125553/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4145125553.dir/build.make CMakeFiles/cmTryCompileExec4145125553.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4145125553.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTryCompileExec4145125553.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec4145125553
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4145125553.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTryCompileExec4145125553.dir/CheckFunctionExists.c.o  -o cmTryCompileExec4145125553 -rdynamic 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 
 Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
-Change Dir: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
+Change Dir: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp
 
-Run Build Command:/usr/bin/gmake "cmTryCompileExec3031326372/fast"
-/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3031326372.dir/build.make CMakeFiles/cmTryCompileExec3031326372.dir/build
-gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3031326372.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTryCompileExec3031326372.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTryCompileExec3031326372
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3031326372.dir/link.txt --verbose=1
-/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    CMakeFiles/cmTryCompileExec3031326372.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3031326372 -rdynamic -lICE 
-gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3491202698/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3491202698.dir/build.make CMakeFiles/cmTryCompileExec3491202698.dir/build
+gmake[1]: Entering directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3491202698.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTryCompileExec3491202698.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3491202698
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3491202698.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    CMakeFiles/cmTryCompileExec3491202698.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3491202698 -rdynamic -lICE 
+gmake[1]: Leaving directory `/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/CMakeTmp'
 
 

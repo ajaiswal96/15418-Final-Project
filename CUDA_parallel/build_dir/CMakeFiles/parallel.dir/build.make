@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel
+CMAKE_SOURCE_DIR = /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir
+CMAKE_BINARY_DIR = /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir
 
 # Include any dependencies generated for this target.
 include CMakeFiles/parallel.dir/depend.make
@@ -258,24 +258,24 @@ CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o: /usr/local/depot/cud
 CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o: /usr/local/depot/cuda-8.0/include/vector_types.h
 CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o: CMakeFiles/parallel.dir/parallel_generated_parallel.cu.o.cmake
 CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o: ../parallel.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object CMakeFiles/parallel.dir//./parallel_generated_parallel.cu.o"
-	cd /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir && /usr/bin/cmake -E make_directory /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//.
-	cd /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//./parallel_generated_parallel.cu.o -D generated_cubin_file:STRING=/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//./parallel_generated_parallel.cu.o.cubin.txt -P /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//parallel_generated_parallel.cu.o.cmake
+	cd /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir && /usr/bin/cmake -E make_directory /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//.
+	cd /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//./parallel_generated_parallel.cu.o -D generated_cubin_file:STRING=/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//./parallel_generated_parallel.cu.o.cubin.txt -P /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir//parallel_generated_parallel.cu.o.cmake
 
 CMakeFiles/parallel.dir/main.cpp.o: CMakeFiles/parallel.dir/flags.make
 CMakeFiles/parallel.dir/main.cpp.o: ../main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/parallel.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/parallel.dir/main.cpp.o -c /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/parallel.dir/main.cpp.o -c /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/main.cpp
 
 CMakeFiles/parallel.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parallel.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/main.cpp > CMakeFiles/parallel.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/main.cpp > CMakeFiles/parallel.dir/main.cpp.i
 
 CMakeFiles/parallel.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parallel.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/main.cpp -o CMakeFiles/parallel.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/main.cpp -o CMakeFiles/parallel.dir/main.cpp.s
 
 CMakeFiles/parallel.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/parallel.dir/main.cpp.o.requires
@@ -292,7 +292,7 @@ parallel_OBJECTS = \
 
 # External object files for target parallel
 parallel_EXTERNAL_OBJECTS = \
-"/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o"
+"/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o"
 
 parallel: CMakeFiles/parallel.dir/main.cpp.o
 parallel: CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o
@@ -322,6 +322,6 @@ CMakeFiles/parallel.dir/clean:
 .PHONY : CMakeFiles/parallel.dir/clean
 
 CMakeFiles/parallel.dir/depend: CMakeFiles/parallel.dir/./parallel_generated_parallel.cu.o
-	cd /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir/DependInfo.cmake --color=$(COLOR)
+	cd /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/CMakeFiles/parallel.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/parallel.dir/depend
 

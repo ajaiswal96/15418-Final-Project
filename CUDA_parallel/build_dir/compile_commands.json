@@ -1,7 +1,7 @@
 [
 {
-  "directory": "/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir",
-  "command": "/usr/bin/c++     -std=c++11 -I/afs/andrew.cmu.edu/usr8/efang/public/glm -I/usr/include/libdrm -I/usr/local/depot/cuda-8.0/include    -o CMakeFiles/parallel.dir/main.cpp.o -c /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/main.cpp",
-  "file": "/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/main.cpp"
+  "directory": "/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir",
+  "command": "/usr/bin/c++     -std=c++11 -I/afs/andrew.cmu.edu/usr8/efang/public/glm -I/usr/include/libdrm -I/usr/local/depot/cuda-8.0/include    -o CMakeFiles/parallel.dir/main.cpp.o -c /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/main.cpp",
+  "file": "/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/main.cpp"
 }
 ]

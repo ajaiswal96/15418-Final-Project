@@ -1,4 +1,4 @@
-# Install script for directory: /afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel
+# Install script for directory: /afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/build_dir/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/afs/andrew.cmu.edu/usr8/ajaiswal/private/418/15418-Final-Project/CUDA_parallel/build_dir/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
