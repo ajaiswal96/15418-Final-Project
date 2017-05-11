@@ -8,8 +8,8 @@ using namespace std;
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include <float.h>
 #include <string.h>
+#include <float.h>
 #include <assert.h>
 #include <fstream>
 
@@ -379,7 +379,7 @@ int run_main() {
 
   /* Write to file */
   ofstream data_file;
-  data_file.open("simulation_data.txt", ios::out | ios::app);
+  data_file.open("simulation_data.txt", ios::out);
   data_file << params.size << "\n";
   data_file << numFrames * stepsPerFrame << "\n";
   for (int i=0; i < numParticles; i++) {
@@ -414,7 +414,7 @@ int run_main() {
 	  data_file << currState->positions[GET_Y(i)] << "\n";
   	}
   	data_file << "DONE WITH AN ITERATION\n";
-  	//data_file.close();
+  //	data_file.close();
   	/* End of write */
 
       //printf("379\n");
