@@ -8,14 +8,20 @@ using namespace std;
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include <float.h>
 #include <string.h>
+#include <float.h>
 #include <assert.h>
 #include <fstream>
+
+#include <cuda.h>
+#include <cuda_runtime.h>
+#include <driver_function.h>
+
 
 #define GET_X(x) (2*x)
 #define GET_Y(y) (2*y + 1)
 
+#define THREADS_PER_BLOCK 128
 #define DAMPING 0.75
 #define OVERLAP_COEFF 1.3
 
@@ -39,17 +45,46 @@ typedef struct CurrState {
   float* velocities_half;
   float* velocities_full;
   float* accelerations;
+  int numBlocks;
+
+  int CUDA_numParticles;
+  int CUDA_tempInt;
+  float CUDA_tempFloat;
+  float* CUDA_velocities_half;
+  float* CUDA_velocities_full;
+  float* CUDA_accelerations;
+  float* CUDA_positions;
 } CurrState;
 
+static inline int nextPow2(int n)
+{
+    n--;
+    n |= n >> 1;
+    n |= n >> 2;
+    n |= n >> 4;
+    n |= n >> 8;
+    n |= n >> 16;
+    n++;
+    return n;
+}
 
 CurrState* allocState(int n) {
   CurrState* currState = (CurrState*)calloc(1,sizeof(CurrState));
-  currState->densities = (float*)calloc(2*n+2, sizeof(float));
-  currState->positions = (float*)calloc(2*n+2, sizeof(float));
-  currState->velocities_full = (float*)calloc(2*n+2, sizeof(float));
-  currState->velocities_half = (float*)calloc(2*n+2, sizeof(float));
-  currState->accelerations = (float*)calloc(2*n+2, sizeof(float));
+  currState->densities = (float*)calloc(n, sizeof(float));
+  currState->positions = (float*)calloc(2*n, sizeof(float));
+  currState->velocities_full = (float*)calloc(2*n, sizeof(float));
+  currState->velocities_half = (float*)calloc(2*n, sizeof(float));
+  currState->accelerations = (float*)calloc(2*n, sizeof(float));
   currState->numParticles = n;
+  currState->numBlocks = currState->numParticles / THREADS_PER_BLOCK + 1;
+
+  currState->CUDA_positions = cudaMalloc(&(currState->CUDA_positions), (2*n*(sizeof(float))));
+  currState->CUDA_tempFloat = cudaMalloc(&(currState->CUDA_tempFloat), sizeof(float));
+  currState->CUDA_tempInt = cudaMalloc(&(currState->CUDA_tempInt), sizeof(int));
+  currState->CUDA_numParticles = cudaMalloc(&(currState->CUDA_numParticles), sizeof(int));
+  currState->CUDA_velocities_full = cudaMalloc(&(currState->CUDA_velocities_full),(2*n*(sizeof(float))));
+  currState->CUDA_velocities_half = cudaMalloc(&(currState->CUDA_velocities_half),(2*n*(sizeof(float))));
+  currState->CUDA_accelerations = cudaMalloc(&(currState->CUDA_accelerations),(2*n*(sizeof(float))));
   return currState;
 }
 
@@ -60,6 +95,14 @@ void freeState(CurrState* currState) {
   free(currState->velocities_full);
   free(currState->accelerations);
   free(currState);
+}
+
+__global__ void kernel_velocityStep(float* CUDA_velocities_half, float* CUDA_velocities_full, float* CUDA_accelerations, int CUDA_numParticles, int CUDA_dt) {
+  int i = blockIdx.x * blockDim.x + threadIdx.x;
+  if (i >= CUDA_numParticles) return;
+  CUDA_velocities_half[i] += CUDA_accelerations * CUDA_dt;
+  CUDA_velocities_full[i] = CUDA_velocities_half[i] + CUDA_accelerations[i] * CUDA_dt / 2;
+  CUDA_positions[i] += CUDA_velocities_half[i] * CUDA_dt;  
 }
 
 //now we need to compute densities. We are going to compute densities once for
@@ -214,7 +257,25 @@ void velocityStep (CurrState* currState, double dt) {
   float* velocities_full = currState->velocities_full;
   float* velocities_half = currState->velocities_half;
   float* positions = currState->positions;
+  int numBlocks = currState->numBlocks;
 
+  int CUDA_tempFloat = currState->CUDA_tempFloat;
+  int CUDA_numParticles = currState->CUDA_numParticles;
+  float* CUDA_velocities_half = currState->CUDA_velocities_half;
+  float* CUDA_velocities_full = currState->CUDA_velocities_full;
+  float* CUDA_accelerations = currState->CUDA_accelerations;
+  float* CUDA_positions = currState->CUDA_positions;
+
+  cudaMemcpy(&CUDA_velocities_half, &velocities_half, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  cudaMemcpy(&CUDA_positions, &positions, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  cudaMemcpy(&CUDA_velocities_full, &velocities_full, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  cudaMemcpy(&CUDA_accelerations, &accelerations, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  cudaMemcpy(&CUDA_numParticles, &numParticles, sizeof(int), cudaMemcpyHostToDevice);
+  cudaMemcpy(&CUDA_tempFloat, &dt, sizeof(float), cudaMemcpyHostToDevice);
+
+  kernel_velocityStep<<<numBlocks, THREADS_PER_BLOCK>>>(CUDA_velocities_half, CUDA_velocities_full, CUDA_accelerations, CUDA_numParticles, CUDA_positions, CUDA_tempFloat);
+
+/*
   for (unsigned int i = 0; i < 2*numParticles; ++i) {
     velocities_half[i] += accelerations[i] * dt;
   }
@@ -226,6 +287,12 @@ void velocityStep (CurrState* currState, double dt) {
   for (unsigned int i = 0; i < 2*numParticles; ++i) {
     positions[i] += velocities_half[i] * dt;
   }
+  */
+
+  cudaMemcpy(&velocities_half, &CUDA_velocities_half,sizeof(float) * 2 * numParticles, cudaMemcpyDeviceToHost);
+  cudaMemcpy(&velocities_full, &CUDA_velocities_full, sizeof(float) * 2 * numParticles, cudaMemcpyDeviceToHost);
+  cudaMemcpy(&accelerations, &CUDA_accelerations, sizeof(float) * 2 * numParticles, cudaMemcpyDeviceToHost);
+
 
   boundaryCheck(currState);
 }
@@ -268,6 +335,7 @@ int sphereDropInit(float x, float y) {
 CurrState* initialParticlePlacement(Parameters* params, initialFluidShape_fun shapeFun) {
   float size = params->size;
   float adjSize = size/OVERLAP_COEFF;
+  int newCount = 0;
   int iterations = 1.0f/adjSize + 1;
   int inRegionCount = 0;
   for (unsigned int i = 0; i < iterations; ++i){
@@ -344,10 +412,6 @@ void errorCheck(CurrState* currState) {
     currX = currState->positions[xIndex];
     currY = currState->positions[yIndex];
 
-    //check that x and y are in bounds and stop program execution if not
-    //printf("currX is %f\n",currX);
-    //printf("currY is %f\n",currY);
-
     assert(currX >=0 || currX <=1);
     assert(currY >=0 || currY <=1);
   }
@@ -371,7 +435,7 @@ int run_main() {
 
   /* Write to file */
   ofstream data_file;
-  data_file.open("simulation_data.txt", ios::out | ios::app);
+  data_file.open("simulation_data.txt", ios::out);
   data_file << params.size << "\n";
   data_file << numFrames * stepsPerFrame << "\n";
   for (int i=0; i < numParticles; i++) {
@@ -379,7 +443,7 @@ int run_main() {
     data_file << currState->positions[GET_Y(i)] << "\n";
   }
   data_file << "DONE WITH AN ITERATION\n";
-  data_file.close();
+  //data_file.close();
   /* End of write */
 
   errorCheck(currState);
@@ -393,22 +457,21 @@ int run_main() {
       velocityStep(currState, timeStep);
 
         /* Write to file */
-        ofstream data_file;
-        data_file.open("simulation_data.txt", ios::out | ios::app);
+        //ofstream data_file;
+        //data_file.open("simulation_data.txt", ios::out | ios::app);
         for (int i=0; i < numParticles; i++) {
           data_file << currState->positions[GET_X(i)] << "\n";
           data_file << currState->positions[GET_Y(i)] << "\n";
         }
         data_file << "DONE WITH AN ITERATION\n";
-        data_file.close();
-        /* End of write */
+
         errorCheck(currState);
+      }
     }
+
+    data_file.close();
+    freeState(currState);
   }
-  //data_file.close();
-  freeState(currState);
-  return 0;
-}
 
 void parallel() {
   run_main();
