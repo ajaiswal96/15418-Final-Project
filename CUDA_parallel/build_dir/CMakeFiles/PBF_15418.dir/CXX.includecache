@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/main.cpp
+stdlib.h
+-
+stdio.h
+-
+parallel.h
+/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/parallel.h
+
+/afs/andrew.cmu.edu/usr22/rrpillai/private/15418/15418-Final-Project/CUDA_parallel/parallel.h
+
