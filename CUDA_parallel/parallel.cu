@@ -142,17 +142,13 @@ __global__ void kernel_calculateDensity(int CUDA_numParticles, float CUDA_innerC
     if (z > 0) {
       float densities_ij = CUDA_outerConstant * z_3;
       CUDA_densities[i] += densities_ij;
-<<<<<<< HEAD
     }
-=======
->>>>>>> e45340c3b83d0bfe5c053302985d678a54ddc450
     }
   }
 }
 
 __global__ void kernel_calculateAcceleration(int CUDA_numParticles, float CUDA_g, float CUDA_size, float CUDA_C0, float CUDA_Cp, float CUDA_Cv, float CUDA_density_ref, float* CUDA_positions, float* CUDA_accelerations, float* CUDA_densities, float* CUDA_velocities_full){
   int i = blockIdx.x * blockDim.x+ threadIdx.x;
-  printf("%d || %d\n", i, CUDA_numParticles);
   if (i >= CUDA_numParticles) {
     return;
   }
@@ -222,66 +218,6 @@ void calculateDensity(Parameters* params, CurrState* currState) {
   cudaMemcpy(currState->densities, currState->CUDA_densities, sizeof(float) * numParticles, cudaMemcpyDeviceToHost);
   cudaMemcpy(currState->positions, currState->CUDA_positions, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
 
-
-  /*
-  for (unsigned int i = 0; i < numParticles; ++i) {
-    densities[i] += innerConstant;
-    for (unsigned int j = i + 1; j < numParticles; ++j) {
-      float dx = positions[GET_X(i)] - positions[GET_X(j)];
-      float dy = positions[GET_Y(i)] - positions[GET_Y(j)];
-      float r_2 = dx * dx + dy * dy;
-      float z = size_2 - r_2;
-      float z_3 = z * z * z;
-      if (z > 0) {
-        float densities_ij = outerConstant * z_3;
-        densities[i] += densities_ij;
-        densities[j] += densities_ij;
-      }
-    }
-  }
-  */
-}
-
-__global__ void kernel_calculateAcceleration(int CUDA_numParticles, float CUDA_g, float CUDA_size, float CUDA_C0, float CUDA_Cp, float CUDA_Cv, float CUDA_density_ref, float* CUDA_positions, float* CUDA_accelerations, float* CUDA_densities, float* CUDA_velocities_full){
-  int i = blockIdx.x * blockDim.x+ threadIdx.x;
-//  printf("%d || %d\n", i, CUDA_numParticles);
-  if (i >= CUDA_numParticles) {
-    return;
-  }
-  float size_2 = CUDA_size * CUDA_size;
-
-  CUDA_accelerations[GET_X(i)] = 0;
-  CUDA_accelerations[GET_Y(i)] = -CUDA_g;
-
-  float currDensity_i = CUDA_densities[i];
-
-  for (unsigned int j = 0; j < CUDA_numParticles; j++) {
-    if (j!=i) {
-      float dx = CUDA_positions[GET_X(i)] - CUDA_positions[GET_X(j)];
-      float dy = CUDA_positions[GET_Y(i)] - CUDA_positions[GET_Y(j)];
-      float r_2 = dx * dx + dy * dy;
-      if (r_2 < size_2) {
-        const float currDensity_j = CUDA_densities[j];
-        float q = sqrt(r_2)/CUDA_size;
-        float u = 1-q;
-        float w0 = CUDA_C0 * u/(currDensity_j * currDensity_i);
-        float wp = w0 * CUDA_Cp * (currDensity_i + currDensity_j - 2 * CUDA_density_ref) * u/q;
-        float wv = w0 * CUDA_Cv;
-        float dvx = CUDA_velocities_full[GET_X(i)] - CUDA_velocities_full[GET_X(j)];
-        float dvy = CUDA_velocities_full[GET_Y(i)] - CUDA_velocities_full[GET_Y(j)];
-        if (i > j) {
-          CUDA_accelerations[GET_X(i)] -= (wp * dx + wv * dvx);
-          CUDA_accelerations[GET_Y(i)] -= (wp * dy + wv * dvy);
-        }
-        else {
-          CUDA_accelerations[GET_X(i)] += (wp * dx + wv * dvx);
-          CUDA_accelerations[GET_Y(i)] += (wp * dy + wv * dvy);
-        }
-      }
-
-    }
-  }
-
 }
 
 void calculateAcceleration(Parameters* params, CurrState* currState) {
@@ -304,7 +240,6 @@ void calculateAcceleration(Parameters* params, CurrState* currState) {
   float size_4 = size_2 * size_2;
   
   calculateDensity(params, currState);
-<<<<<<< HEAD
   
   float C0 = mass / (M_PI * size_4);
   float Cp = 15 * k;
@@ -326,63 +261,7 @@ void calculateAcceleration(Parameters* params, CurrState* currState) {
 
 
   cudaMemcpy(currState->accelerations, currState->CUDA_accelerations, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
-=======
-  //printf("calculateDensity Returns\n");
 
-  float C0 = mass / (M_PI * size_4);
-  float Cp = 15 * k;
-  float Cv = -40 * viscocity;
-
-  float* CUDA_positions = currState->CUDA_positions;
-  float* CUDA_accelerations = currState->CUDA_accelerations;
-  float* CUDA_densities = currState->CUDA_densities;
-  float* CUDA_velocities_full = currState->CUDA_velocities_full;
-
-
-
-  cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_accelerations, currState->accelerations, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_densities, currState->densities, sizeof(float) * numParticles, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_velocities_full, currState->velocities_full, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
-
-  int numBlocks = numParticles / THREADS_PER_BLOCK + 1;
-
-  kernel_calculateAcceleration<<<numBlocks, THREADS_PER_BLOCK>>>(numParticles, g, size, C0, Cp, Cv, density_ref, CUDA_positions, CUDA_accelerations, CUDA_densities, CUDA_velocities_full);
-
-
-cudaMemcpy(currState->accelerations, currState->CUDA_accelerations, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
-
-
-/*
-  for (unsigned int i = 0; i < numParticles; ++i) {
-    accelerations[GET_X(i)] = 0;
-    accelerations[GET_Y(i)] = -g;
-  }
-
-  for (unsigned int i = 0; i < numParticles; ++i) {
-    const float currDensity_i = densities[i];
-    for (unsigned int j = i+1; j < numParticles; ++j) {
-      float dx = positions[GET_X(i)] - positions[GET_X(j)];
-      float dy = positions[GET_Y(i)] - positions[GET_Y(j)];
-      float r_2 = dx * dx + dy * dy;
-      if (r_2 < size_2) {
-        const float currDensity_j = densities[j];
-        float q = sqrt(r_2)/size;
-        float u = 1-q;
-        float w0 = C0 * u/(currDensity_j * currDensity_i);
-        float wp = w0 * Cp * (currDensity_i + currDensity_j - 2 * density_ref) * u/q;
-        float wv = w0 * Cv;
-        float dvx = velocities[GET_X(i)] - velocities[GET_X(j)];
-        float dvy = velocities[GET_Y(i)] - velocities[GET_Y(j)];
-        accelerations[GET_X(i)] += (wp * dx + wv * dvx);
-        accelerations[GET_Y(i)] += (wp * dy + wv * dvy);
-        accelerations[GET_X(j)] -= (wp * dx + wv * dvx);
-        accelerations[GET_Y(j)] -= (wp * dy + wv * dvy);
-      }
-    }
-  }
-  */
->>>>>>> e45340c3b83d0bfe5c053302985d678a54ddc450
 }
 
 void reflect(int axis, float barrier, float* positions, float* velocities_full, float* velocities_half) {
