@@ -21,7 +21,7 @@ using namespace std;
 #define GET_X(x) (2*x)
 #define GET_Y(y) (2*y + 1)
 
-#define THREADS_PER_BLOCK 128
+#define THREADS_PER_BLOCK 1024
 #define DAMPING 0.75
 #define OVERLAP_COEFF 1.3
 
@@ -208,15 +208,15 @@ void calculateDensity(Parameters* params, CurrState* currState) {
   float* CUDA_positions = currState->CUDA_positions;
   float* CUDA_densities = currState->CUDA_densities;
 
-  cudaMemcpy(currState->CUDA_densities, currState->densities, sizeof(float) * numParticles, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_densities, currState->densities, sizeof(float) * numParticles, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
 
   int numBlocks = numParticles / THREADS_PER_BLOCK + 1;
 
   kernel_calculateDensity<<<numBlocks,THREADS_PER_BLOCK>>>(numParticles, innerConstant, outerConstant, size_2, CUDA_densities, CUDA_positions);
 
-  cudaMemcpy(currState->densities, currState->CUDA_densities, sizeof(float) * numParticles, cudaMemcpyDeviceToHost);
-  cudaMemcpy(currState->positions, currState->CUDA_positions, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(currState->densities, currState->CUDA_densities, sizeof(float) * numParticles, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(currState->positions, currState->CUDA_positions, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
 
 }
 
@@ -250,17 +250,17 @@ void calculateAcceleration(Parameters* params, CurrState* currState) {
   float* CUDA_densities = currState->CUDA_densities;
   float* CUDA_velocities_full = currState->CUDA_velocities_full;
 
-  cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_accelerations, currState->accelerations, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_densities, currState->densities, sizeof(float) * numParticles, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_velocities_full, currState->velocities_full, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_accelerations, currState->accelerations, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_densities, currState->densities, sizeof(float) * numParticles, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_velocities_full, currState->velocities_full, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
 
   int numBlocks = numParticles / THREADS_PER_BLOCK + 1;
 
   kernel_calculateAcceleration<<<numBlocks, THREADS_PER_BLOCK>>>(numParticles, g, size, C0, Cp, Cv, density_ref, CUDA_positions, CUDA_accelerations, CUDA_densities, CUDA_velocities_full);
 
 
-  cudaMemcpy(currState->accelerations, currState->CUDA_accelerations, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(currState->accelerations, currState->CUDA_accelerations, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
 
 }
 
@@ -290,35 +290,127 @@ void reflect(int axis, float barrier, float* positions, float* velocities_full, 
   velocities_full[1] *= damping;
 }
 
-void boundaryCheck(CurrState* currState) {
+__global__ void boundaryCheckKernel(int CUDA_numParticles, float damping, float* CUDA_positions, float* CUDA_velocities_full, float* CUDA_velocities_half) {
+ int i = blockIdx.x * blockDim.x+ threadIdx.x;
+ if (i >= CUDA_numParticles) {
+    return;
+  }
   const float XMIN = 0.0;
   const float YMIN = 0.0;
   const float XMAX = 1.0;
   const float YMAX = 1.0;
+  if (CUDA_positions[2*i] < XMIN) {
+    if (CUDA_velocities_full[2*i] != 0) { //this means the particle has stopped
+
+    float dt = (CUDA_positions[2*i] - XMIN) / CUDA_velocities_full[2*i];
+
+    CUDA_positions[2*i] -= CUDA_velocities_full[2*i] * (1-damping) * dt;
+    CUDA_positions[2*i+1] -= CUDA_velocities_full[2*i+1] * (1-damping) * dt;
+
+    //reflect the positions
+    CUDA_positions[2*i] = 2 * XMIN - CUDA_positions[2*i];
+
+    //reflect the velocities
+    CUDA_velocities_full[2*i] = - CUDA_velocities_full[2*i];
+    CUDA_velocities_half[2*i] = - CUDA_velocities_half[2*i];
+
+    //damp the velocities
+    CUDA_velocities_half[2*i] *= damping;
+    CUDA_velocities_half[2*i+1] *= damping;
+    CUDA_velocities_full[2*i] *= damping;
+    CUDA_velocities_full[2*i+1] *= damping;
+    }
+  } else if (CUDA_positions[2*i] > XMAX) {
+    if (CUDA_velocities_full[2*i] != 0) { //this means the particle has stopped
+
+    float dt = (CUDA_positions[2*i] - XMAX) / CUDA_velocities_full[2*i];
+
+    CUDA_positions[2*i] -= CUDA_velocities_full[2*i] * (1-damping) * dt;
+    CUDA_positions[2*i+1] -= CUDA_velocities_full[2*i+1] * (1-damping) * dt;
+
+    //reflect the positions
+    CUDA_positions[2*i] = 2 * XMAX - CUDA_positions[2*i];
+
+    //reflect the velocities
+    CUDA_velocities_full[2*i] = - CUDA_velocities_full[2*i];
+    CUDA_velocities_half[2*i] = - CUDA_velocities_half[2*i];
+
+    //damp the velocities
+    CUDA_velocities_half[2*i] *= damping;
+    CUDA_velocities_half[2*i+1] *= damping;
+    CUDA_velocities_full[2*i] *= damping;
+    CUDA_velocities_full[2*i+1] *= damping;
+    }
+  }
+
+
+  if (CUDA_positions[2*i+1] < YMIN) {
+    if (CUDA_velocities_full[2*i+1] != 0) { //this means the particle has stopped
+
+    float dt = (CUDA_positions[2*i+1] - YMIN) / CUDA_velocities_full[2*i+1];
+
+    CUDA_positions[2*i] -= CUDA_velocities_full[2*i] * (1-damping) * dt;
+    CUDA_positions[2*i+1] -= CUDA_velocities_full[2*i+1] * (1-damping) * dt;
+
+    //reflect the positions
+    CUDA_positions[2*i+1] = 2 * YMIN - CUDA_positions[2*i+1];
+
+    //reflect the velocities
+    CUDA_velocities_full[2*i+1] = - CUDA_velocities_full[2*i+1];
+    CUDA_velocities_half[2*i+1] = - CUDA_velocities_half[2*i+1];
+
+    //damp the velocities
+    CUDA_velocities_half[2*i] *= damping;
+    CUDA_velocities_half[2*i+1] *= damping;
+    CUDA_velocities_full[2*i] *= damping;
+    CUDA_velocities_full[2*i+1] *= damping;  
+    }
+  } else if (CUDA_positions[2*i+1] > YMAX) {
+    if (CUDA_velocities_full[2*i+1] != 0) { //this means the particle has stopped
+
+    float dt = (CUDA_positions[2*i+1] - YMAX) / CUDA_velocities_full[2*i+1];
+
+    CUDA_positions[2*i] -= CUDA_velocities_full[2*i] * (1-damping) * dt;
+    CUDA_positions[2*i+1] -= CUDA_velocities_full[2*i+1] * (1-damping) * dt;
+
+    //reflect the positions
+    CUDA_positions[2*i+1] = 2 * YMAX - CUDA_positions[2*i+1];
+
+    //reflect the velocities
+    CUDA_velocities_full[2*i+1] = - CUDA_velocities_full[2*i+1];
+    CUDA_velocities_half[2*i+1] = - CUDA_velocities_half[2*i+1];
+
+    //damp the velocities
+    CUDA_velocities_half[2*i] *= damping;
+    CUDA_velocities_half[2*i+1] *= damping;
+    CUDA_velocities_full[2*i] *= damping;
+    CUDA_velocities_full[2*i+1] *= damping;
+    }
+  }
+}
+
+void boundaryCheck(CurrState* currState) {
 
   int numParticles = currState->numParticles;
   float* velocities_full = currState->velocities_full;
   float* velocities_half = currState->velocities_half;
   float* positions = currState->positions;
 
-  for (unsigned int i = 0; i < numParticles; ++i, positions+=2,  velocities_full+=2, velocities_half+=2) {
+  float* CUDA_positions = currState->CUDA_positions;
+  float* CUDA_velocities_half = currState->CUDA_velocities_half;
+  float* CUDA_velocities_full = currState->CUDA_velocities_full;
 
-    if (positions[0] < XMIN) {
-      reflect (0, XMIN, positions, velocities_full, velocities_half);
-    }
+  //cudaMemcpy(CUDA_positions, positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  //cudaMemcpy(CUDA_velocities_full, velocities_full, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  //cudaMemcpy(CUDA_velocities_half, velocities_half, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+ 
+  int numBlocks = numParticles/THREADS_PER_BLOCK + 1;
+  boundaryCheckKernel<<<numBlocks, THREADS_PER_BLOCK>>>(numParticles, DAMPING, CUDA_positions, CUDA_velocities_full, CUDA_velocities_half);
 
-    if (positions[0] > XMAX) {
-      reflect (0, XMAX, positions, velocities_full, velocities_half);
-    }
+  //cudaMemcpy(positions, CUDA_positions, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(velocities_full, CUDA_velocities_full, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(velocities_half, CUDA_velocities_half, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
 
-    if (positions[1] < YMIN) {
-      reflect (1, YMIN, positions, velocities_full, velocities_half);
-    }
-
-    if (positions[1] > YMAX) {
-      reflect (1, YMAX, positions, velocities_full, velocities_half);
-    }
-  }
 }
 
 void velocityStep (CurrState* currState, double dt) {
@@ -334,19 +426,31 @@ void velocityStep (CurrState* currState, double dt) {
   float* CUDA_accelerations = currState->CUDA_accelerations;
   float* CUDA_positions = currState->CUDA_positions;
 
-  cudaMemcpy(currState->CUDA_velocities_half, currState->velocities_half, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_velocities_full, currState->velocities_full, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
-  cudaMemcpy(currState->CUDA_accelerations, currState->accelerations, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_velocities_half, currState->velocities_half, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_velocities_full, currState->velocities_full, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
+  //cudaMemcpy(currState->CUDA_accelerations, currState->accelerations, sizeof(float) * 2 * numParticles, cudaMemcpyHostToDevice);
 
   kernel_velocityStep<<<numBlocks, THREADS_PER_BLOCK>>>(CUDA_velocities_half, CUDA_velocities_full, CUDA_accelerations, numParticles, CUDA_positions, dt);
 
-  cudaMemcpy(currState->velocities_half, currState->CUDA_velocities_half,sizeof(float) * 2 * numParticles, cudaMemcpyDeviceToHost);
-  cudaMemcpy(currState->velocities_full, currState->CUDA_velocities_full, sizeof(float) * 2 * numParticles, cudaMemcpyDeviceToHost);
-  cudaMemcpy(currState->positions, currState->CUDA_positions, sizeof(float)*2*numParticles, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(currState->velocities_half, currState->CUDA_velocities_half,sizeof(float) * 2 * numParticles, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(currState->velocities_full, currState->CUDA_velocities_full, sizeof(float) * 2 * numParticles, cudaMemcpyDeviceToHost);
+  //cudaMemcpy(currState->positions, currState->CUDA_positions, sizeof(float)*2*numParticles, cudaMemcpyDeviceToHost);
 
   boundaryCheck(currState);
 }
+
+__global__ void kernel_velocityStart(float* CUDA_velocities_half, float* CUDA_velocities_full, float* CUDA_accelerations, int CUDA_numParticles, float* CUDA_positions, float CUDA_dt) {
+  int i = blockIdx.x * blockDim.x + threadIdx.x;
+
+  if (i >= 2* CUDA_numParticles) {
+    return;
+  }
+  CUDA_velocities_half[i] = CUDA_velocities_full[i] + CUDA_accelerations[i] * CUDA_dt/2;
+  CUDA_velocities_full[i] += CUDA_accelerations[i] * CUDA_dt;
+  CUDA_positions[i] += CUDA_velocities_half[i] * CUDA_dt;
+}
+
 
 void velocityStart (CurrState* currState, double dt) {
   int numParticles = currState->numParticles;
@@ -355,7 +459,15 @@ void velocityStart (CurrState* currState, double dt) {
   float* velocities_half = currState->velocities_half;
   float* positions = currState->positions;
 
-  for (unsigned int i = 0; i < 2*numParticles; ++i) {
+  float* CUDA_velocities_half = currState->CUDA_velocities_half;
+  float* CUDA_velocities_full = currState->CUDA_velocities_full;
+  float* CUDA_accelerations = currState->CUDA_accelerations;
+  float* CUDA_positions = currState->CUDA_positions;
+  
+  int numBlocks = 2* numParticles/THREADS_PER_BLOCK + 1;
+  
+  kernel_velocityStart<<<numBlocks, THREADS_PER_BLOCK>>>(CUDA_velocities_half, CUDA_velocities_full, CUDA_accelerations, numParticles, CUDA_positions, dt);
+  /*for (unsigned int i = 0; i < 2*numParticles; ++i) {
     velocities_half[i] = velocities_full[i] + accelerations[i] * dt / 2;
   }
 
@@ -365,7 +477,7 @@ void velocityStart (CurrState* currState, double dt) {
 
   for (unsigned int i = 0; i < 2*numParticles; ++i) {
     positions[i] += velocities_half[i] * dt;
-  }
+  }*/
 
   boundaryCheck(currState);
 }
@@ -479,9 +591,17 @@ int run_main() {
   float timeStep = params.dt;
   int numParticles = currState->numParticles;
 
+  cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  cudaMemcpy(currState->CUDA_accelerations, currState->accelerations, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  cudaMemcpy(currState->CUDA_densities, currState->densities, sizeof(float) * numParticles, cudaMemcpyHostToDevice);
+  cudaMemcpy(currState->CUDA_velocities_full, currState->velocities_full, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  cudaMemcpy(currState->CUDA_velocities_half, currState->velocities_half, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+
   calculateAcceleration(&params, currState);
+
   velocityStart(currState, timeStep);
 
+  cudaMemcpy(currState->positions, currState->CUDA_positions, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
   /* Write to file */
   ofstream data_file;
   data_file.open("simulation_data.txt", ios::out);
@@ -495,7 +615,7 @@ int run_main() {
   //data_file.close();
   /* End of write */
 
-  errorCheck(currState);
+  //errorCheck(currState);
 
   //iterate through all the frames in the image
   for (unsigned int frame = 1; frame < numFrames; ++frame) {
@@ -505,6 +625,7 @@ int run_main() {
       //printf("calculaate acceleration returned on loop %d\n",j);
       velocityStep(currState, timeStep);
 
+      cudaMemcpy(currState->positions, currState->CUDA_positions, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
         /* Write to file */
         //ofstream data_file;
         //data_file.open("simulation_data.txt", ios::out | ios::app);
@@ -514,7 +635,7 @@ int run_main() {
         }
         data_file << "DONE WITH AN ITERATION\n";
 
-        errorCheck(currState);
+        //errorCheck(currState);
       }
       cout << frame << "\n";
     }
