@@ -119,7 +119,7 @@ void freeState(CurrState* currState) {
 
 __global__ void kernel_velocityStep(float* CUDA_velocities_half, float* CUDA_velocities_full, float* CUDA_accelerations, int CUDA_numParticles, float* CUDA_positions, float CUDA_dt) {
   int i = blockIdx.x * blockDim.x + threadIdx.x;
-  //printf("%d || %d\n", i, CUDA_numParticles);
+
   if (i >= 2* CUDA_numParticles) {
     //printf("FUCKME");
     return;
@@ -131,9 +131,11 @@ __global__ void kernel_velocityStep(float* CUDA_velocities_half, float* CUDA_vel
 
 __global__ void kernel_calculateDensity(int CUDA_numParticles, float CUDA_innerConstant, float CUDA_outerConstant, float CUDA_size_2, float* CUDA_densities, float* CUDA_positions) {
   int i = blockIdx.x * blockDim.x + threadIdx.x;
+
   if (i >= CUDA_numParticles) {
     return;
   }
+
   CUDA_densities[i] += CUDA_innerConstant;
   for (unsigned int j = 0; j < CUDA_numParticles; j++) {
     if (j == i) continue;
@@ -145,11 +147,51 @@ __global__ void kernel_calculateDensity(int CUDA_numParticles, float CUDA_innerC
     if (z > 0) {
       float densities_ij = CUDA_outerConstant * z_3;
       CUDA_densities[i] += densities_ij;
-      CUDA_densities[j] += densities_ij;
     }
   }
 }
 
+__global__ void kernel_calculateAcceleration(int CUDA_numParticles, float CUDA_g, float CUDA_size, float CUDA_C0, float CUDA_Cp, float CUDA_Cv, float CUDA_density_ref, float* CUDA_positions, float* CUDA_accelerations, float* CUDA_densities, float* CUDA_velocities_full){
+  int i = blockIdx.x * blockDim.x+ threadIdx.x;
+  printf("%d || %d\n", i, CUDA_numParticles);
+  if (i >= CUDA_numParticles) {
+    return;
+  }
+  float size_2 = CUDA_size * CUDA_size;
+
+  CUDA_accelerations[GET_X(i)] = 0;
+  CUDA_accelerations[GET_Y(i)] = -CUDA_g;
+
+  float currDensity_i = CUDA_densities[i];
+
+  for (unsigned int j = 0; j < CUDA_numParticles; j++) {
+    if (j!=i) {
+      float dx = CUDA_positions[GET_X(i)] - CUDA_positions[GET_X(j)];
+      float dy = CUDA_positions[GET_Y(i)] - CUDA_positions[GET_Y(j)];
+      float r_2 = dx * dx + dy * dy;
+      if (r_2 < size_2) {
+        const float currDensity_j = CUDA_densities[j];
+        float q = sqrt(r_2)/CUDA_size;
+        float u = 1-q;
+        float w0 = CUDA_C0 * u/(currDensity_j * currDensity_i);
+        float wp = w0 * CUDA_Cp * (currDensity_i + currDensity_j - 2 * CUDA_density_ref) * u/q;
+        float wv = w0 * CUDA_Cv;
+        float dvx = CUDA_velocities_full[GET_X(i)] - CUDA_velocities_full[GET_X(j)];
+        float dvy = CUDA_velocities_full[GET_Y(i)] - CUDA_velocities_full[GET_Y(j)];
+        if (i > j) {
+          CUDA_accelerations[GET_X(i)] -= (wp * dx + wv * dvx);
+          CUDA_accelerations[GET_Y(i)] -= (wp * dy + wv * dvy);
+        }
+        else {
+          CUDA_accelerations[GET_X(i)] += (wp * dx + wv * dvx);
+          CUDA_accelerations[GET_Y(i)] += (wp * dy + wv * dvy);
+        }
+      }
+
+    }
+  }
+
+}
 
 //now we need to compute densities. We are going to compute densities once for
 //each ij ji pair since they are the same.
@@ -222,13 +264,36 @@ void calculateAcceleration(Parameters* params, CurrState* currState) {
   //printf("initialization complete in calculateAcceleration\n");
   calculateDensity(params, currState);
   //printf("calculateDensity Returns\n");
+
+  float C0 = mass / (M_PI * size_4);
+  float Cp = 15 * k;
+  float Cv = -40 * viscocity;
+
+  float* CUDA_positions = currState->CUDA_positions;
+  float* CUDA_accelerations = currState->CUDA_accelerations;
+  float* CUDA_densities = currState->CUDA_densities;
+  float* CUDA_velocities_full = currState->CUDA_velocities_full;
+
+
+
+  cudaMemcpy(currState->CUDA_positions, currState->positions, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  cudaMemcpy(currState->CUDA_accelerations, currState->accelerations, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+  cudaMemcpy(currState->CUDA_densities, currState->densities, sizeof(float) * numParticles, cudaMemcpyHostToDevice);
+  cudaMemcpy(currState->CUDA_velocities_full, currState->velocities_full, sizeof(float) * numParticles * 2, cudaMemcpyHostToDevice);
+
+  int numBlocks = numParticles / THREADS_PER_BLOCK + 1;
+
+  kernel_calculateAcceleration<<<numBlocks, THREADS_PER_BLOCK>>>(numParticles, g, size, C0, Cp, Cv, density_ref, CUDA_positions, CUDA_accelerations, CUDA_densities, CUDA_velocities_full);
+
+
+cudaMemcpy(currState->accelerations, currState->CUDA_accelerations, sizeof(float) * numParticles * 2, cudaMemcpyDeviceToHost);
+
+
+/*
   for (unsigned int i = 0; i < numParticles; ++i) {
     accelerations[GET_X(i)] = 0;
     accelerations[GET_Y(i)] = -g;
   }
-  float C0 = mass / (M_PI * size_4);
-  float Cp = 15 * k;
-  float Cv = -40 * viscocity;
 
   for (unsigned int i = 0; i < numParticles; ++i) {
     const float currDensity_i = densities[i];
@@ -252,6 +317,7 @@ void calculateAcceleration(Parameters* params, CurrState* currState) {
       }
     }
   }
+  */
 }
 
 void reflect(int axis, float barrier, float* positions, float* velocities_full, float* velocities_half) {
