@@ -4,6 +4,10 @@ Anubhav Jaiswal  (ajaiswal)
 
 Rohit Pillai  (rrpillai)
 
+## Final Report 
+
+<a href="https://github.com/ajaiswal96/15418-Final-Project/blob/master/FinalProjectReport.pdf">Final Report</a>
+
 ## Checkpoint Update
 
 We have updated our schedule to reflect where we currently are. 
